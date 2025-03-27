@@ -1,5 +1,5 @@
 # Creating a multi-node Kubernetes cluster on local machine
-This guide will bring you close to a real world use case of Kubernetes, on your local machine!
+# Deploying my portfolio on a multi-node Kubernetes cluster on local machine
 
 Requirements:
 1. [VirtualBox](https://www.virtualbox.org/) 
@@ -11,8 +11,8 @@ For Kubernetes version `1.24+`
 
 ## Provisioning VMs with all necessary tools
 ```sh
-$ git clone https://github.com/mosesmbadi/k8s-local-lab.git
-$ cd k8s-local-lab
+$ git clone https://github.com/hindzaafouri/local-k8s-setup.git
+$ cd local-k8s-setup
 $ vagrant up
 $ vagrant reload
 ```
@@ -75,7 +75,6 @@ $ kubectl get all --all-namespaces
 
 ```
 
-
 ![screenshot](./screenshots/k8s-local-dev.png)
 
 
@@ -104,16 +103,10 @@ kubectl exec -it <pod-name> -c <container-name> -- /bin/bash
 ```
 
 To access your application outside the cluster 
-```kubectl get service -n easymed``
+```kubectl get service -n my-portfolio``
 This will show you the port the application is running on, assuming you used a NodePort in your service definition
 You can then access your application with 
 ```<node-ipaddress>:port```
-
-
-
-To read logs
-kubectl logs -l app=easymed-api -n easymed
-
 
 ========================
 Troubleshooting
@@ -139,8 +132,3 @@ scripts/install-containerd.sh
 scripts/install-kubeadm.sh
 scripts/update-kubelet-config.sh
 ```
-=====================
-
-
-[PayPal Donate](https://www.paypal.com/donate/?hosted_button_id=45A3RRNJMNAGQ)
-[Bitcoin Donate](bc1q9cymjyzt7zj28zcztjafys0sur329gektd4zzh)
