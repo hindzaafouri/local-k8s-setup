@@ -1,5 +1,4 @@
-# Creating a multi-node Kubernetes cluster on local machine
-# Deploying my portfolio on a multi-node Kubernetes cluster on local machine
+# Creating a multi-node Kubernetes cluster on local machine 
 
 Requirements:
 1. [VirtualBox](https://www.virtualbox.org/) 
