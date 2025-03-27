@@ -1,0 +1,45 @@
+#Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: portfolio
+
+
+---
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-portfolio
+  namespace: portfolio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-portfolio
+  template:
+    metadata:
+      labels:
+        app: my-portfolio
+    spec:
+      containers:
+      - name: my-portfolio
+        image: hindxx/my-portfolio:v1
+        ports:
+        - containerPort: 3000
+
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-portfolio
+  namespace: portfolio
+spec:
+  selector:
+    app: my-portfolio
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: NodePort
